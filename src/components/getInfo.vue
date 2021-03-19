@@ -1,89 +1,25 @@
 <template>
-  <div class="container">
-    <table>
-      <getInfo v-bind:_unitInfo="PassengerInformation[0]"></getInfo>
-      <getInfo v-bind:_unitInfo="PassengerInformation[2]"></getInfo>
-    </table>
-
-    <table class="table">
-      <tr style="background-color: #f5f4f4">
-        <th>基本資料（請如實填寫）</th>
-        <th></th>
-        <th></th>
-        <th></th>
+      <tr id="orderBoard">
+          <td></td>
+          <td><span v-text="_unitInfo.name"></span></td>
+          <td><span v-text="_unitInfo.birthday"></span></td>
+          <td><span v-text="_unitInfo.phoneNum"></span></td>
+          <td><span v-text="_unitInfo.email"></span></td>
       </tr>
-      <tr style="padding-top: 1%">
-        <td>訂票人<br />FULL NAME</td>
-        <td style="width: 75%"><input v-model="PassengerInfo.name" /></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr style="padding-top: 1%">
-        <td>
-          身分證字號<br />PASSPORT ID
-          <select v-model="selNation">
-            <option v-for="(item, index) in nationality" v-bind:key="index">
-              {{ item.nationCon }}
-            </option>
-          </select>
-        </td>
-        <td style="width: 75%">
-          <input
-            type="text"
-            v-bind:class="{ 'is-invalid': checkIDError }"
-            v-model="checkID"
-            placeholder="請輸入身分證字號"
-          />
-
-          <div class="invalid-feedback">
-            {{ checkIDErrMsg }}
-          </div>
-        </td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr style="padding-top: 1%">
-        <td>生日<br />Birthday</td>
-        <td style="width: 75%">
-          <input
-            class="forn-control"
-            type="date"
-            v-model="PassengerInfo.birthday"
-            :max="today"
-          />
-        </td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr style="padding-top: 1%">
-        <td>行動電話號碼<br />MOBILE NUMBER</td>
-        <td style="width: 75%"><input v-model="PassengerInfo.phoneNum" /></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr style="padding-top: 1%">
-        <td>電子郵件<br />EMAIL</td>
-        <td style="width: 75%"><input v-model="PassengerInfo.email" /></td>
-        <td></td>
-        <td></td>
-      </tr>
-    </table>
-    <div class="totalprice">
-      <button id="ConfirmButton">確認<br />Submit</button>
-    </div>
-  </div>
 </template>
 
 <script>
-import getInfo from "../components/getInfo.vue";
 export default {
-  name: "PassInfo",
-  components: {
-    getInfo,
-  },
+  name: "getInfo",
 
   props: {
-    msg: String,
+    _unitInfo: {
+      name: String,
+      idNum: String,
+      birthday: String,
+      phoneNum: String,
+      email: String,
+    },
   },
   computed: {
     today() {
