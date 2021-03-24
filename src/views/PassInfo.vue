@@ -44,14 +44,13 @@
         </td>
         <td style="width: 75%">
           <input
-            type="text"
-            v-bind:class="{ 'is-invalid': checkIDError }"
-            v-model="checkID"
+            v-bind:class="{ 'is-invalid': idNumError }"
+            v-model="PassengerInfo.idNum"
             placeholder="請輸入身分證字號"
           />
 
           <div class="invalid-feedback">
-            {{ checkIDErrMsg }}
+            {{ idNumErrMsg }}
           </div>
         </td>
         <td></td>
@@ -107,24 +106,23 @@ export default {
   },
 
   watch: {
-    checkID: function () {
+    'PassengerInfo.idNum': function () {
       var isText = /^[A-Z]{1}[1-2||8-9]{1}[0-9]{8}$/;
-      if (!isText.test(this.checkID)) {
-        this.checkIDError = true;
-        this.checkIDErrMsg = "請檢查格式是否正確“開頭大寫‘A-Z’ + 後九碼‘0-9’”";
+      if (!isText.test(this.PassengerInfo.idNum)) {
+        this.idNumError = true;
+        this.idNumErrMsg = "請檢查格式是否正確“開頭大寫‘A-Z’ + 後九碼‘0-9’”";
       } else {
-        this.checkIDError = false;
-        this.PassengerInfor.idNum = this.checkID;
+        this.idNumError = false;
       }
-      console.log(this.checkIDError);
+      console.log(this.idNumError);
     },
   },
 
   data: function () {
     return {
-      checkID: "",
-      checkIDError: false,
-      checkIDErrMsg: "",
+      idNum: "",
+      idNumError: false,
+      idNumErrMsg: "",
       orderinfo: "orderinfo",
       shipName: "shipName",
       departure: "departure",

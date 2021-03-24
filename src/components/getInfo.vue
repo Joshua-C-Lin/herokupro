@@ -27,28 +27,11 @@ export default {
     },
   },
 
-  watch: {
-    checkID: function () {
-      var isText = /^[A-Z][1-2||8-9][0-9]{8}$/;
-      if (!isText.test(this.checkID)) {
-        this.checkIDError = true;
-        this.checkIDErrMsg = "請檢查格式是否正確“開頭大寫‘A-Z’ + 後九碼‘0-9’”";
-      } else if (this.checkID.length > 10) {
-        this.checkIDError = true;
-        this.checkIDErrMsg = "請勿超過10個字";
-      } else {
-        this.checkIDError = false;
-        this.PassengerInfo.idNum = this.checkID;
-      }
-      console.log(this.checkIDError);
-    },
-  },
-
   data: function () {
     return {
-      checkID: "",
-      checkIDError: false,
-      checkIDErrMsg: "",
+      idNum: "",
+      idNumError: false,
+      idNumErrMsg: "",
       orderinfo: "orderinfo",
       shipName: "shipName",
       departure: "departure",
