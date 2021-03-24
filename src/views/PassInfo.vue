@@ -1,9 +1,24 @@
 <template>
   <div class="container">
     <table>
-      <getInfo v-bind:_unitInfo="PassengerInformation[0]"></getInfo>
-      <getInfo v-bind:_unitInfo="PassengerInformation[2]"></getInfo>
+      <!-- <getInfo v-bind:_unitInfo="PassengerInformation[0]"></getInfo> -->
+      <!-- <getInfo v-bind:_unitInfo="PassengerInformation[2]"></getInfo> -->
+      <tr style="background-color:#f5f4f4;">
+        <th>訂票人</th>
+        <th>身分證字號</th>
+        <th>生日</th>
+        <th>行動電話號碼</th>
+        <th>電子郵件</th>
+      </tr>
+      <tr id="orderBoard" v-for="(item, index) in PassengerInfo" v-bind:key="index">
+          <td> {{ PassengerInfo.name }}</td>
+          <td> {{ PassengerInfo.idNum }}</td>
+          <td> {{ PassengerInfo.birthday }}</td>
+          <td> {{ PassengerInfo.phoneNum }}</td>
+          <td> {{ PassengerInfo.email }}</td>
+      </tr>
     </table>
+      
 
     <table class="table">
       <tr style="background-color: #f5f4f4">
@@ -75,11 +90,11 @@
 </template>
 
 <script>
-import getInfo from "../components/getInfo.vue";
+// import getInfo from "../components/getInfo.vue";
 export default {
   name: "PassInfo",
   components: {
-    getInfo,
+    // getInfo,
   },
 
   props: {
@@ -93,16 +108,13 @@ export default {
 
   watch: {
     checkID: function () {
-      var isText = /^[A-Z][1-2||8-9][0-9]{8}$/;
+      var isText = /^[A-Z]{1}[1-2||8-9]{1}[0-9]{8}$/;
       if (!isText.test(this.checkID)) {
         this.checkIDError = true;
         this.checkIDErrMsg = "請檢查格式是否正確“開頭大寫‘A-Z’ + 後九碼‘0-9’”";
-      } else if (this.checkID.length > 10) {
-        this.checkIDError = true;
-        this.checkIDErrMsg = "請勿超過10個字";
       } else {
         this.checkIDError = false;
-        this.PassengerInformation[0].idNum = this.checkID;
+        this.PassengerInfor.idNum = this.checkID;
       }
       console.log(this.checkIDError);
     },

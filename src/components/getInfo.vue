@@ -1,7 +1,7 @@
 <template>
       <tr id="orderBoard">
-          <td></td>
           <td><span v-text="_unitInfo.name"></span></td>
+          <td><span v-text="_unitInfo.idNum"></td>
           <td><span v-text="_unitInfo.birthday"></span></td>
           <td><span v-text="_unitInfo.phoneNum"></span></td>
           <td><span v-text="_unitInfo.email"></span></td>
@@ -15,7 +15,7 @@ export default {
   props: {
     _unitInfo: {
       name: String,
-      checkID: String,
+      idNum: String,
       birthday: String,
       phoneNum: String,
       email: String,
@@ -38,7 +38,7 @@ export default {
         this.checkIDErrMsg = "請勿超過10個字";
       } else {
         this.checkIDError = false;
-        this.PassengerInformation[0].idNum = this.checkID;
+        this.PassengerInfo.idNum = this.checkID;
       }
       console.log(this.checkIDError);
     },
@@ -88,7 +88,7 @@ export default {
       ],
       PassengerInfo: {
         name: "",
-        checkID: "",
+        idNum: "",
         birthday: "",
         phoneNum: "",
         email: "",
