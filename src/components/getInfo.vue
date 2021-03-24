@@ -15,7 +15,7 @@ export default {
   props: {
     _unitInfo: {
       name: String,
-      idNum: String,
+      checkID: String,
       birthday: String,
       phoneNum: String,
       email: String,
@@ -88,7 +88,7 @@ export default {
       ],
       PassengerInfo: {
         name: "",
-        idNum: "",
+        checkID: "",
         birthday: "",
         phoneNum: "",
         email: "",
